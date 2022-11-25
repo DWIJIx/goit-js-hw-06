@@ -17,6 +17,10 @@ let markup = '';
 images.forEach(img => {
   markup = images
     .map(img => `<li class="gallery__item"><img class="gallery__img" src="${img.url}" alt="${img.alt}"></li>`)
-    .join('');
+    
+  
+  
 });
-list.insertAdjacentHTML('afterbegin', markup);
+console.log(markup);
+const markup2 = markup.join('')
+list.insertAdjacentHTML('afterbegin', markup2);
