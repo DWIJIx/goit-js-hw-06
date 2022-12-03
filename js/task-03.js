@@ -13,27 +13,24 @@ const images = [
   },
 ];
 
-// const list = document.querySelector('.gallery');
-
-
-// створили типу 1 картинку
-const imgMarkup = img => {
-  return `
+// створили функцію, яка повертає рядок з 1 картинки
+const imgMarkup = img => 
+      `
       <li>
         <img src="${img.url}" alt="${img.alt}">
       </li>
       `
-}
 
-// console.log(imgMarkup(images[0]))
+// Мапаєм масив обєктів за допомогою колбек ф-ї imgMarkup (вертає масив рядків) + join розбиважмо масив рядків в 
+// загальний рядок.Записуємо в змінну imagesMarkup
+
+const imagesMarkup = images.map(imgMarkup).join('');
+
+// Створюємо посилання на ul
+const ulContiner = document.querySelector('.gallery')
+// Вставляємо суцільний рядок imagesMarkup в ulContiner на місце afterbegin
+ulContiner.insertAdjacentHTML('afterbegin', imagesMarkup)
 
 
-// Мапаєм масив обєктів за допомогою колбек ф-ї imgMarkup (вертає масив) + join розбиважмо масив в рядок
-const imgMarkupLi = images.map(imgMarkup).join('')
 
-// console.log(imgMarkupLi)
-
-const imgUlEl = document.querySelector('.gallery')
-
-imgUlEl.insertAdjacentHTML('afterbegin', imgMarkupLi)
 
