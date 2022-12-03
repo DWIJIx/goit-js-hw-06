@@ -12,15 +12,28 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-const list = document.querySelector('.gallery');
-let markup = '';
-images.forEach(img => {
-  markup = images
-    .map(img => `<li class="gallery__item"><img class="gallery__img" src="${img.url}" alt="${img.alt}"></li>`)
-    
-  
-  
-});
-console.log(markup);
-const markup2 = markup.join('')
-list.insertAdjacentHTML('afterbegin', markup2);
+
+// const list = document.querySelector('.gallery');
+
+
+// створили типу 1 картинку
+const imgMarkup = img => {
+  return `
+      <li>
+        <img src="${img.url}" alt="${img.alt}">
+      </li>
+      `
+}
+
+// console.log(imgMarkup(images[0]))
+
+
+// Мапаєм масив обєктів за допомогою колбек ф-ї imgMarkup (вертає масив) + join розбиважмо масив в рядок
+const imgMarkupLi = images.map(imgMarkup).join('')
+
+// console.log(imgMarkupLi)
+
+const imgUlEl = document.querySelector('.gallery')
+
+imgUlEl.insertAdjacentHTML('afterbegin', imgMarkupLi)
+
